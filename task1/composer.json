@@ -1,0 +1,12 @@
+{
+  "name": "mvcaaa/phpdevtask01",
+  "description": "Task 01",
+  "minimum-stability": "dev",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Andrey Astashov",
+      "email": "mvc.aaa@gmail.com"
+    }
+  ]
+}
