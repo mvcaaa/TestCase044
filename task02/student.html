@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Ball mover</title>
+    <style>
+        #image {
+            position: absolute;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+<img id="image" src="ball.png" width="64"/>
+<script>
+    $(function () {
+        var ws = new WebSocket("ws://localhost:8888/ball");
+        ws.onmessage = function (message) {
+            try {
+                var json = JSON.parse(message.data);
+            } catch (e) {
+                console.log('Non-valid JSON: ', message.data);
+                return;
+            }
+            $("#image").css({left: json.pageX, top: json.pageY});
+        };
+    });
+
+</script>
+</body>
+</html>

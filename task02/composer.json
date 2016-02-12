@@ -11,10 +11,11 @@
   ],
   "autoload": {
     "psr-0": {
-      "MyApp": "src"
+      "src": "src"
     }
   },
   "require": {
-    "cboden/ratchet": "0.3.*"
+    "cboden/ratchet": "0.3.*",
+    "symfony/console": "3.0.x-dev"
   }
 }

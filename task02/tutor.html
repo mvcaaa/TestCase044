@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ball mover</title>
+    <style>
+        #image {
+            position: absolute;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+<img id="image" src="ball.png" width="64"/>
+<script>
+    $(function () {
+        var ws = new WebSocket("ws://localhost:8888/ball");
+        ws.onopen = function () {
+            $(document).mousemove(function (e) {
+                $("#image").css({left: e.pageX, top: e.pageY});
+                var msg = {
+                    type: "coords",
+                    pageX: e.pageX,
+                    pageY: e.pageY,
+                    date: Date.now()
+                };
+                ws.send(JSON.stringify(msg));
+            });
+        };
+    });
+</script>
+</body>
+</html>
